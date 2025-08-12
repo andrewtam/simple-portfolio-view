@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+For this project, I chose prompt 2 (Design a simple portfolio view for a wallet). 
 
-## Getting Started
+I begin all of my projects by first gathering references. I do this to both get a better sense of what I want to make and to figure out the specific patterns and layouts that I like and dislike. Most of the wallet solutions that I admire are iOS based so I had to extrapolate desktop solutions for this project.
 
-First, run the development server:
+I then made a mockup in Figma. I thought first about the sections and hierarchy that I wanted and separated it into a balance section with a chart at the top, the asset table on the bottom, and then the navigation bar on the left (based on the Figma link sent in the email). My Figma mockups aren't necessarily the caconical versions that I end up implementing, but I do like to be thorough and use the canvas as a way to think through the specific design choices that I want to make. In the future, I'd like to explore prompt-based UI generation as a brainstorming tool as well. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I then went into code and first used Cursor to help generate a structure and layout for the components (I'd like to explore using the Figma MCP server along with Claude Code to expedite this process). Since the LLM only produced a very rough sketch of what I wanted, I spent time writing / tweaking the code until I got a static mockup that matched my vision (I deviated from the Figma file if I saw room for improvement). In theory, I'd be able to write the more complex React code needed for a larger project in this stage as well.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I then thought about and implemented the animations / interactions I wanted for this demo. I decided to scope it at: hover interactions for the sidebar and asset table (150ms ease), menu for switching between chart timespans (0.26s spring w/o bounce), price delta fade in (0.2 easeInOut opacity + y translation transform), cursor hover interaction to get continuous prices for the chart (mostly vibe coded), and the menu for the table filter (0.1s easeOut opacity + scale transform). I did use a pre-made animation as a starting point for the time menu (to expedite the development process) but I typically don't keep an animation with the default parameters (you likely need to tweak the styling / timing to find something that works for your particular use case).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+There would be several next steps if I were to continue working on this project. First, I'd spent time re-thinking the implementation of the chart away from an interactive SVG chart (likely using some sort of chart library) and would want to find a way to make the chart morph between time views. The design language in this project was also very simple and I'd ideally want to figure out the exact branding (typeface / color palette) that would fit well for this project. I'd also implement the filtering feature for the table and make sure the site is responsive and works well on mobile. Lastly, I'd ask someone to double check and fix miscellaneous styling such as text sizing, bolding, spacing, etc.
